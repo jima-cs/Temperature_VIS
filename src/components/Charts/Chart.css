@@ -1,0 +1,86 @@
+.Chart {
+    overflow: visible;
+    display: flex;
+}
+
+.Chart text {
+    fill: #95a5a6;
+}
+
+.ChartTitle {
+    margin: 0;
+}
+
+.Plot {
+    width: 100%;
+}
+
+.Line {
+    transition: all 0.3s ease-out;
+}
+
+.Line--type-line {
+    fill: none;
+    stroke: #27AB83;
+    stroke-width: 3px;
+    stroke-linecap: round;
+}
+
+.Line--type-area {
+    fill: rgba(152, 128, 250, 0.185);
+    stroke-width: 0;
+}
+
+.Axis__line {
+    stroke: #bdc3c7;
+}
+
+.Axis__label {
+    text-anchor: middle;
+    font-size: 0.8em;
+    letter-spacing: 0.01em;
+}
+
+.Axis__tick {
+    font-size: 0.9em;
+    transition: all 0.3s ease-out;
+}
+
+.AxisHorizontal .Axis__tick {
+    text-anchor: middle;
+}
+
+.AxisVertical .Axis__tick {
+    dominant-baseline: middle;
+    text-anchor: end;
+}
+
+.Circles__circle {
+    fill: #27AB83;
+    transition: all 0.3s ease-out;
+}
+
+.Bars__rect {
+    fill: #27AB83;
+    transition: all 0.3s ease-out;
+}
+
+.Bars__rect:hover {
+    fill: #65D6AD;
+}
+
+.Tooltip {
+    fill: #bdc3c7;
+}
+.Tooltip__label {
+    text-anchor: middle;
+    transition: all 0.3s ease-out;
+}
+
+.Tooltip__arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #27AB83;
+}
