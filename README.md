@@ -5,7 +5,7 @@ group member: Ji Ma, Ziao Gong
 
 1. 使用git命令，将本项目同步到本地：
 
-   `git clone https://github.com/qkwl2001/Temperature_vis.git`
+   `git clone https://github.com/qkwl2001/Temperature_VIS.git`
    
 2. 在项目文件夹内，使用git命令
    
@@ -20,3 +20,7 @@ group member: Ji Ma, Ziao Gong
    安装所有依赖库：`npm install`
    
    运行项目：`npm start`
+
+
+
+还有不少问题没有解决,头疼...
