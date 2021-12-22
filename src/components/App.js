@@ -24,9 +24,9 @@ const useStyles = makeStyles(theme => ({
     controlPanel: {
         position: 'absolute',
         top: 70,
-        height: 100,
+        height: 200,
         left: 70,
-        width: 100,
+        width: 200,
     },
     assistView: {
         position: 'absolute',
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
         // bottom: 370,
         height: 200,
         top: 80,
-        left: 40,
+        left: 300,
         width: 100,
         // right: 570,
     },
@@ -80,13 +80,13 @@ function App() {
     // 目前四个视图都是一样的，查看AssistView的注释
     return <div className={classes.root}>
         <div className={clsx(classes.view, classes.title)}><h2> Temperature VIS </h2></div>
-        {/*<div className={clsx(classes.view, classes.controlPanel)}><ControlPanel/></div>*/}
+        <div className={clsx(classes.view, classes.controlPanel)}><ControlPanel/></div>
         {/*<div className={clsx(classes.view, classes.assistView)}><AssistView/></div>*/}
         <div className={clsx(classes.view, classes.overview)}><Overview/></div>
         <div className={clsx(classes.detailView)}><DetailView/></div>
         {/*<div className={clsx(classes.view, classes.barView)}><BarView/></div>*/}
 
-        <div className={clsx(classes.themeRiver)}><ThemeRiver/></div>
+        {/*<div className={clsx(classes.themeRiver)}><ThemeRiver/></div>*/}
     </div>;
 }
 

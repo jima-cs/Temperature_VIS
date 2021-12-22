@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { store } from "../store";
+import { DateStore } from "../store";
 import ReactEcharts from "echarts-for-react";
 import 'echarts/map/js/china';
 
 function Overview() {
-    const {state, dispatch} = useContext(store);
+    const {state, dispatch} = useContext(DateStore);
 
     const getOption = () => {
         return {

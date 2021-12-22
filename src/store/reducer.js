@@ -1,11 +1,16 @@
 
 // 不同请求的处理
-const reducer = (state, action) => {
+const DateReducer = (state, action) => {
     switch (action.type) {
         case 'increment':
             return {
                 ...state,
                 count: state.count + 1
+            };
+        case 'setValue':
+            return {
+                ...state,
+                year: action.year
             };
         case 'init': {
             let newData = [];
@@ -22,4 +27,4 @@ const reducer = (state, action) => {
     }
 }
 
-export default reducer;
+export default DateReducer;

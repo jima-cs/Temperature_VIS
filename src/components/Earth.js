@@ -10,11 +10,14 @@ import mapPoints from "./mapPoints.js";
 
 class Earth extends React.Component{
         // const {state, dispatch} = useContext(store);
-
-    componentDidMount()
+    ThisYear = 1960;
+    componentDidMount(){
+        this.drawEarth();
+    }
+    drawEarth()
     {
-        console.log("here");
-
+        console.log("here,store=");
+        this.ThisYear = this.props.store.year;
         console.log(this.props.store);
         const box = document.getElementById("box");
         const canvas = document.getElementById("canvas");
@@ -187,23 +190,82 @@ class Earth extends React.Component{
 
         }
 
+
+        // 创建柱状图
+        function createNewBar() {
+
+            // 要在public目录下
+            d3.csv('./data/forest_clean.csv').then(data1 => {
+                // data.forEach(datum => {
+                //     datum['人口（万人）'] = +(datum['人口（万人）']);
+                // })
+                console.log(data1);
+                console.log("year=",data.year);
+
+                if (!data || data.length === 0) return;
+
+                console.log("latitude = ",data1.columns);
+                // console.log("[latitude] = ",data1['latitude']);
+
+                let color;
+                const scale = d3.scaleLinear().domain(domain).range(colors);
+                let data2=data1.map(
+                    function (consdata) {
+                        consdata['value']=consdata[data.year];
+                        return consdata;
+                    }
+
+                )
+                console.log("查看data2",data2)
+
+                data2.forEach(({latitude, longitude,value: size}) => {
+                    color = scale(size);
+                    const pos = convertLatLngToSphereCoords(latitude, longitude, globeRadius);
+                    if (pos.dx && pos.dy && pos.dz) {
+                        const geometry = new THREE.BoxGeometry(2, 2, 1);
+                        geometry.applyMatrix4(
+                            new THREE.Matrix4().makeTranslation(0, 0, -0.5)
+                        );
+
+                        const barMesh = new THREE.Mesh(
+                            geometry,
+                            new THREE.MeshBasicMaterial({color})
+                        );
+                        barMesh.position.set(pos.dx, pos.dy, pos.dz);
+                        barMesh.lookAt(earthMesh.position);
+
+                        barMesh.scale.z = Math.max(size / 60000, 0.1);
+                        barMesh.updateMatrix();
+
+                        meshGroup.add(barMesh);
+                    }
+                });
+
+            });
+
+        }
         // 动画
         function animate() {
             requestAnimationFrame(animate);
             screenRender();
             // 每次旋转角速度0.04弧度
-            meshGroup.rotateY(0.04)
+            meshGroup.rotateY(0.004)
         }
 
         // 创建点阵图
         createMapPoints();
         // 创建柱状统计图
-        createBar();
+        createNewBar();
         // 动画
         animate()
     }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.store !== this.props.store ){
+            this.drawEarth();
+        }
+    }
 
-        render() {
+    render() {
             return (
                 <div id="box" style={{width: "100vw", height: "100vh"}}>
                     {/* <h2 style={{textAlign: 'center'}}>Covid-19 Earth</h2> */}
