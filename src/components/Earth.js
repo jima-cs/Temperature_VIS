@@ -37,13 +37,13 @@ class Earth extends React.Component{
         // 渲染柱状图颜色和节点
         const colors = [
             "#ffdfe0",
-            "#ffc0c0",
-            "#FF0000",
-            "#ee7070",
-            "#c80200",
-            "#900000",
-            "#510000",
-            "#290000"
+            "#f3e86f",
+            "rgba(216,245,137,0.93)",
+            "#70ee7d",
+            "#00c832",
+            "#00904d",
+            "#00511c",
+            "#063701"
         ];
         const domain = [1000, 3000, 10000, 50000, 100000, 500000, 1000000, 1000000];
 
@@ -150,7 +150,7 @@ class Earth extends React.Component{
         // 创建柱状图
         function createBar() {
             // 要在public目录下
-            d3.csv('./data/earthData1.csv').then(data1 => {
+            d3.csv('./data/forest_clean.csv').then(data1 => {
                 // data.forEach(datum => {
                 //     datum['人口（万人）'] = +(datum['人口（万人）']);
                 // })
@@ -211,7 +211,9 @@ class Earth extends React.Component{
                 const scale = d3.scaleLinear().domain(domain).range(colors);
                 let data2=data1.map(
                     function (consdata) {
-                        consdata['value']=consdata[data.year];
+                        consdata['value']=Math.log2(consdata[data.year]) * 200000;
+                        consdata['value']=Math.log2(consdata[data.year]) * 100000;
+                        consdata['value']=consdata[data.year]
                         return consdata;
                     }
 
@@ -269,7 +271,7 @@ class Earth extends React.Component{
             return (
                 <div id="box" style={{width: "100vw", height: "100vh"}}>
                     {/* <h2 style={{textAlign: 'center'}}>Covid-19 Earth</h2> */}
-                    <canvas  id="canvas" style={{width: "45%", height: "45%"}}> </canvas>
+                    <canvas  id="canvas" style={{width: "85%", height: "85%"}}> </canvas>
                 </div>
             );
         }

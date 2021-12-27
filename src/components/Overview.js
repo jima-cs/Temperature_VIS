@@ -2,29 +2,51 @@ import React, { useContext } from 'react';
 import { DateStore } from "../store";
 import ReactEcharts from "echarts-for-react";
 import 'echarts/map/js/china';
+import * as echarts from 'echarts';
+import graph from "./../pages/graph_force/les-miserables.json"
 
 function Overview() {
-    const {state, dispatch} = useContext(DateStore);
+    // const {state, dispatch} = useContext(DateStore);
+
+
+        graph.nodes.forEach(function (node) {
+            node.symbolSize = 5;
+        });
 
     const getOption = () => {
         return {
-            xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            title: {
+                text: 'Les Miserables',
+                subtext: 'Default layout',
+                top: 'bottom',
+                left: 'right'
             },
-            yAxis: {
-                type: 'value'
-            },
-            height: 150,
-            width:300,
-            series: [{
-                data: [120, 200, 150, 80, 70, 110, 130],
-                type: 'bar',
-                showBackground: true,
-                backgroundStyle: {
-                    color: 'rgba(180, 180, 180, 0.2)'
+            tooltip: {},
+            legend: [
+                {
+                    // selectedMode: 'single',
+                    data: graph.categories.map(function (a) {
+                        return a.name;
+                    })
                 }
-            }]
+            ],
+            series: [
+                {
+                    name: 'Les Miserables',
+                    type: 'graph',
+                    layout: 'force',
+                    data: graph.nodes,
+                    links: graph.links,
+                    categories: graph.categories,
+                    roam: true,
+                    label: {
+                        position: 'right'
+                    },
+                    force: {
+                        repulsion: 100
+                    }
+                }
+            ]
         };
     };
 

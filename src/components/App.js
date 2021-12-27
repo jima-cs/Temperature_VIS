@@ -7,8 +7,9 @@ import AssistView from "./AssistView";
 import ControlPanel from "./ControlPanel";
 import Overview from "./Overview";
 import DetailView from "./DetailView";
-import BarView from "./barView/barView"
-import ThemeRiver from "./ThemeRiver";
+import LifeExpectancy from "./lifeExpectancy";
+import RaceBar from "./RaceBar";
+import EchartsTest from "./RaceBar/race";
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,9 +25,9 @@ const useStyles = makeStyles(theme => ({
     controlPanel: {
         position: 'absolute',
         top: 70,
-        height: 200,
-        left: 70,
-        width: 200,
+        height: 100,
+        left: 50,
+        width: 290,
     },
     assistView: {
         position: 'absolute',
@@ -45,17 +46,17 @@ const useStyles = makeStyles(theme => ({
     detailView: {
         position: 'absolute',
         // bottom: 370,
-        height: 200,
-        top: 80,
-        left: 300,
-        width: 100,
+        height: 400,
+        top: 160,
+        left: 50,
+        width: 400,
         // right: 570,
     },
     barView: {
         position: 'absolute',
         bottom: 370,
-        height: 720,
-        left: 80,
+        height: 1020,
+        width: 800,
         right: 270,
     },
     themeRiver: {
@@ -65,6 +66,15 @@ const useStyles = makeStyles(theme => ({
         top:20,
         left: 380,
         width:250
+        // right: 270,
+    },
+    lifeView: {
+        position: 'absolute',
+        // bottom: 370,
+        height: 520,
+        top:20,
+        left: 380,
+        width:550
         // right: 270,
     },
 }))
@@ -79,13 +89,14 @@ function App() {
     // 可视化项目中，若干视图一般采用绝对布局，方便后续调整各个视图的位置与大小
     // 目前四个视图都是一样的，查看AssistView的注释
     return <div className={classes.root}>
-        <div className={clsx(classes.view, classes.title)}><h2> Temperature VIS </h2></div>
-        <div className={clsx(classes.view, classes.controlPanel)}><ControlPanel/></div>
+        {/*<div className={clsx(classes.view, classes.title)}><h2> Temperature VIS </h2></div>*/}
+        <div className={clsx(classes.controlPanel)}><ControlPanel/></div>
         {/*<div className={clsx(classes.view, classes.assistView)}><AssistView/></div>*/}
-        <div className={clsx(classes.view, classes.overview)}><Overview/></div>
+        {/*<div className={clsx(classes.view, classes.overview)}><Overview/></div>*/}
         <div className={clsx(classes.detailView)}><DetailView/></div>
         {/*<div className={clsx(classes.view, classes.barView)}><BarView/></div>*/}
-
+        {/*<div className={clsx(classes.view,classes.lifeView)}> <EchartsTest/> </div>*/}
+        {/*<div className={clsx(classes.view,classes.lifeView)}> <RaceBar/> </div>*/}
         {/*<div className={clsx(classes.themeRiver)}><ThemeRiver/></div>*/}
     </div>;
 }
