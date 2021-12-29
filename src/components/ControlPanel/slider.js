@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import {DateStore} from "../../store";
 class IntegerStep extends React.Component {
     state = {
-        inputValue: 1988,
+        inputValue: 1991,
     };
     static contextType = DateStore;
 
@@ -18,7 +18,7 @@ class IntegerStep extends React.Component {
             <Row>
                 <Col span={12}>
                     <Slider
-                        min={1959}
+                        min={1990}
                         max={2023}
                         onChange={(value)=>{
                             this.setState({
@@ -31,7 +31,7 @@ class IntegerStep extends React.Component {
                 </Col>
                 <Col span={4}>
                     <InputNumber
-                        min={1959}
+                        min={1990}
                         max={2023}
                         style={{ margin: '0 16px' }}
                         value={inputValue}
