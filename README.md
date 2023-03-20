@@ -22,5 +22,3 @@ group member: Ji Ma, Ziao Gong
    运行项目：`npm start`
 
 
-
-还有不少问题没有解决,头疼...
